@@ -32,12 +32,12 @@ func TestConvertInt(t *testing.T) {
 
 	var toComplex128 complex128
 	if To(Val, &toComplex128) != nil || toComplex128 != complex(float64(Val), 0) {
-		t.Errorf("expected converting %s to complex128 to be 3371, got %v", typ, toComplex128)
+		t.Errorf("expected converting %s to complex128 to be (371+0i), got %v", typ, toComplex128)
 	}
 
 	var toComplex64 complex64
 	if To(Val, &toComplex64) != nil || toComplex64 != complex64(complex(float64(Val), 0)) {
-		t.Errorf("expected converting %s to complex64 to be 3371, got %v", typ, toComplex64)
+		t.Errorf("expected converting %s to complex64 to be (371+0i), got %v", typ, toComplex64)
 	}
 
 }
