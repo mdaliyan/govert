@@ -13,5 +13,8 @@ go:
 # in vendor/
 install: true
 
+before_script:
+  - go get github.com/mdaliyan/govert
+
 script:
    - go test -v -race ./...  # Run all the tests with the race detector enabled
