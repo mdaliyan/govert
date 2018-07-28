@@ -10,12 +10,12 @@ This package uses reflection to detect data types so it may not be what
 you want if you have so many ops and you need code performance to be high. 
 Otherwise it’s ok for simple use cases, build prototypes or learning purpose.
     
-##install:
+## Install:
 ````bash
 $ go get github.com/mdaliyan/govert
 ````
     
-## usage:
+## Usage:
  
 first, import the package as following,then you have 2 ways to use `govert`. 
  
