@@ -23,7 +23,38 @@ first, import the package as following,then you have 2 ways to use `govert`.
 import "github.com/mdaliyan/govert"
 ````
     
-##### 1. Converting by passing destination pointer
+##### 1. Converting inline
+````go
+package main
+    
+import "github.com/mdaliyan/govert"
+import "fmt"
+    
+func main() {
+    
+    // float64 to string
+    aString := govert.ToString(3783.2882332, 3) // "3783.288"
+    
+    // bool to string
+    aTrueString := govert.ToString(true)   // "true"
+    aFalseString := govert.ToString(false) // "false"
+    
+    // bool to int8
+    aTrueInt8 := govert.ToInt8(true)   // 1
+    aFalseInt8 := govert.ToInt8(false) // 0
+    
+    // string to float64
+    aFloat32 := govert.ToFloat32("3783.2882332") // 3783.2883
+    
+    // string to int8
+    anInt8 := govert.ToInt8("56") // 56
+    
+    fmt.Println(aString, aTrueString, aFalseString, aTrueInt8, aFalseInt8, aFloat32, anInt8)
+    // 3783.288 true false 1 0 3783.2883 56
+}
+````
+
+##### 2. Converting by passing destination pointer
     
 ````go
 package main
@@ -55,38 +86,6 @@ func main() {
     
     fmt.Println(err, aFloat, anInt64, anInt32, String1, String2, String3)
     // <nil> 3783.2882332 3783 3783 3783.2882 3783.288 3783.29
-}
-```` 
-    
-    
-##### 2. Converting inline
-````go
-package main
-    
-import "github.com/mdaliyan/govert"
-import "fmt"
-    
-func main() {
-    
-    // float64 to string
-    aString := govert.ToString(3783.2882332, 3) // "3783.288"
-    
-    // bool to string
-    aTrueString := govert.ToString(true)   // "true"
-    aFalseString := govert.ToString(false) // "false"
-    
-    // bool to int8
-    aTrueInt8 := govert.ToInt8(true)   // 1
-    aFalseInt8 := govert.ToInt8(false) // 0
-    
-    // string to float64
-    aFloat32 := govert.ToFloat32("3783.2882332") // 3783.2883
-    
-    // string to int8
-    anInt8 := govert.ToInt8("56") // 56
-    
-    fmt.Println(aString, aTrueString, aFalseString, aTrueInt8, aFalseInt8, aFloat32, anInt8)
-    // 3783.288 true false 1 0 3783.2883 56
 }
 ```` 
     
