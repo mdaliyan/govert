@@ -3,12 +3,12 @@
 [![Build Status](https://travis-ci.org/mdaliyan/govert.svg?branch=master)](https://travis-ci.org/mdaliyan/govert)
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE)
     
-`govert` is simple package that provides you some helpers to convert 
-golang basic data types to one another easily.
+govert provides some helpers to convert golang basic data types, specially *interfaces* to other basic types.
  
 This package uses reflection to detect data types so it may not be what 
 you want if you have so many ops and you need code performance to be high. 
 Otherwise it’s ok for simple use cases, build prototypes or learning purpose.
+   
     
 ## Install:
 ````bash
