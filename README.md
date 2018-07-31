@@ -101,7 +101,7 @@ func main() {
  
 ## Benchmarks:
     
-Converting numbert like int, in16, int32, in64, float32, float64, uint, uint, uint16, uint32, uint64
+Converting numbers like int, in16, int32, in64, float32, float64, uint, uint, uint16, uint32, uint64
 to each other with govert is totally non-optimal. Just convert them like this.
     
 ````go
@@ -122,15 +122,15 @@ converting it, or you are trying to convert something to string or vice versa,
         <th>compare</th>
       </tr>
       <tr>
-        <td>From</td>
-        <td>To</td>
+        <th>From</th>
+        <th>To</th>
         <th>ns/op</th>
         <th>B/op</th>
         <th>allocs/op</th>
         <th>ns/op</th>
         <th>B/op</th>
         <th>allocs/op</th>
-        <th>times</th>
+        <th>times slower</th>
       </tr>
     </thead>
     <tbody>
