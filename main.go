@@ -1,3 +1,4 @@
+// govert provides you some helpers to convert basic data types specially interfaces to other basic types.
 package govert
 
 import (
@@ -7,15 +8,16 @@ import (
 	"strings"
 )
 
-var invalidOutputType = errors.New("output data type is not a simple type")
+var invalidOutputType = errors.New("output data type is not i simple type")
 
 func getElemKind(i interface{}) reflect.Kind {
 	return reflect.TypeOf(i).Elem().Kind()
 }
 
-func To(in interface{}, out interface{}, params ...interface{}) (err error) {
+// This converts it's first parameter's value to type of it's second parameter and overwrites the second parameter with it
+func This(in interface{}, out interface{}, params ...interface{}) (err error) {
 
-	// input might be a pointer, this ensures we check input type correctly
+	// input might be i pointer, this ensures we check input type correctly
 	for reflect.ValueOf(in).Kind() == reflect.Ptr {
 		in = reflect.ValueOf(in).Elem().Interface()
 	}
@@ -39,7 +41,6 @@ func To(in interface{}, out interface{}, params ...interface{}) (err error) {
 		err, outputValue = convertInt64To(int64(in.(int)), out)
 
 	case reflect.Int8:
-
 		err, outputValue = convertInt64To(int64(in.(int8)), out)
 
 	case reflect.Int16:
@@ -77,7 +78,7 @@ func To(in interface{}, out interface{}, params ...interface{}) (err error) {
 	case reflect.Complex128:
 
 	default:
-		err = errors.New("input data type is not a simple type")
+		err = errors.New("input data type is not i simple type")
 
 	}
 
