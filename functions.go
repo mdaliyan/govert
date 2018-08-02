@@ -26,61 +26,61 @@ func Bool(in interface{}) (out bool) {
 	return
 }
 
-// Bool converts basic types to int
+// Int converts basic types to int
 func Int(in interface{}) (out int) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to in8
+// Int8 converts basic types to in8
 func Int8(in interface{}) (out int8) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to int16
+// Int16 converts basic types to int16
 func Int16(in interface{}) (out int16) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to int32
+// Int32 converts basic types to int32
 func Int32(in interface{}) (out int32) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to int64
+// Int64 converts basic types to int64
 func Int64(in interface{}) (out int64) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to uint
+// Uint converts basic types to uint
 func Uint(in interface{}) (out uint) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to uint8
+// Uint8 converts basic types to uint8
 func Uint8(in interface{}) (out uint8) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to uint6
+// Uint16 converts basic types to uint6
 func Uint16(in interface{}) (out uint16) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to uint32
+// Uint32 converts basic types to uint32
 func Uint32(in interface{}) (out uint32) {
 	This(in, &out)
 	return
 }
 
-// Bool converts basic types to uint64
+// Uint64 converts basic types to uint64
 func Uint64(in interface{}) (out uint64) {
 	This(in, &out)
 	return
@@ -92,7 +92,7 @@ func Float32(in interface{}) (out float32) {
 	return
 }
 
-// Bool converts basic types to float64
+// Float64 converts basic types to float64
 func Float64(in interface{}) (out float64) {
 	This(in, &out)
 	return
@@ -104,7 +104,7 @@ func Complex64(in interface{}) (out complex64) {
 	return
 }
 
-// Bool converts basic types to complex128
+// Complex128 converts basic types to complex128
 func Complex128(in interface{}) (out complex128) {
 	This(in, &out)
 	return
