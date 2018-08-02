@@ -4,7 +4,7 @@
 [![GoDoc](https://godoc.org/github.com/mdaliyan/govert?status.svg)](https://godoc.org/github.com/mdaliyan/govert)
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE)
     
-govert provides you some helpers to convert golang basic data types specially _interfaces_ to any another basic type.
+Package govert provides you some helpers to convert golang basic data types specially _interfaces_ to any another basic type.
  
 This package uses reflection to detect data types so it may not be what 
 you want if you have so many ops and you need code performance to be high. 

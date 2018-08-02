@@ -1,4 +1,4 @@
-// govert provides you some helpers to convert basic data types specially interfaces to other basic types.
+// Package govert provides you some helpers to convert basic data types specially interfaces to other basic types.
 package govert
 
 import (
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var invalidOutputType = errors.New("output data type is not i simple type")
+var errInvalidOutputType = errors.New("output data type is not i simple type")
 
 func getElemKind(i interface{}) reflect.Kind {
 	return reflect.TypeOf(i).Elem().Kind()
@@ -32,46 +32,46 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 	switch reflect.TypeOf(reflect.ValueOf(in).Interface()).Kind() {
 
 	case reflect.String:
-		err, outputValue = convertStringTo(in.(string), out)
+		outputValue, err = convertStringTo(in.(string), out)
 
 	case reflect.Bool:
-		err, outputValue = convertBoolTo(in.(bool), out)
+		outputValue, err = convertBoolTo(in.(bool), out)
 
 	case reflect.Int:
-		err, outputValue = convertInt64To(int64(in.(int)), out)
+		outputValue, err = convertInt64To(int64(in.(int)), out)
 
 	case reflect.Int8:
-		err, outputValue = convertInt64To(int64(in.(int8)), out)
+		outputValue, err = convertInt64To(int64(in.(int8)), out)
 
 	case reflect.Int16:
-		err, outputValue = convertInt64To(int64(in.(int16)), out)
+		outputValue, err = convertInt64To(int64(in.(int16)), out)
 
 	case reflect.Int32:
-		err, outputValue = convertInt64To(int64(in.(int32)), out)
+		outputValue, err = convertInt64To(int64(in.(int32)), out)
 
 	case reflect.Int64:
-		err, outputValue = convertInt64To(in.(int64), out)
+		outputValue, err = convertInt64To(in.(int64), out)
 
 	case reflect.Uint:
-		err, outputValue = convertUint64To(uint64(in.(uint)), out)
+		outputValue, err = convertUint64To(uint64(in.(uint)), out)
 
 	case reflect.Uint8:
-		err, outputValue = convertUint64To(uint64(in.(uint8)), out)
+		outputValue, err = convertUint64To(uint64(in.(uint8)), out)
 
 	case reflect.Uint16:
-		err, outputValue = convertUint64To(uint64(in.(uint16)), out)
+		outputValue, err = convertUint64To(uint64(in.(uint16)), out)
 
 	case reflect.Uint32:
-		err, outputValue = convertUint64To(uint64(in.(uint32)), out)
+		outputValue, err = convertUint64To(uint64(in.(uint32)), out)
 
 	case reflect.Uint64:
-		err, outputValue = convertUint64To(in.(uint64), out)
+		outputValue, err = convertUint64To(in.(uint64), out)
 
 	case reflect.Float32:
-		err, outputValue = convertFloat64To(float64(in.(float32)), out, params...)
+		outputValue, err = convertFloat64To(float64(in.(float32)), out, params...)
 
 	case reflect.Float64:
-		err, outputValue = convertFloat64To(in.(float64), out, params...)
+		outputValue, err = convertFloat64To(in.(float64), out, params...)
 
 	case reflect.Complex64:
 
@@ -89,7 +89,7 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 	return
 }
 
-func convertStringTo(in string, out interface{}, params ...interface{}) (err error, convertedValue interface{}) {
+func convertStringTo(in string, out interface{}, params ...interface{}) (convertedValue interface{}, err error) {
 
 	toFloat64 := func(input string) (o float64) {
 		o, err = strconv.ParseFloat(input, 64)
@@ -147,14 +147,14 @@ func convertStringTo(in string, out interface{}, params ...interface{}) (err err
 		convertedValue = complex(toFloat64(in), 0)
 
 	default:
-		err = invalidOutputType
+		err = errInvalidOutputType
 
 	}
 
 	return
 }
 
-func convertBoolTo(in bool, out interface{}, params ...interface{}) (err error, convertedValue interface{}) {
+func convertBoolTo(in bool, out interface{}, params ...interface{}) (convertedValue interface{}, err error) {
 
 	toInt8 := func(input bool) int8 {
 		if input {
@@ -214,14 +214,14 @@ func convertBoolTo(in bool, out interface{}, params ...interface{}) (err error, 
 		convertedValue = complex(float64(toInt8(in)), 0)
 
 	default:
-		err = invalidOutputType
+		err = errInvalidOutputType
 
 	}
 
 	return
 }
 
-func convertFloat64To(in float64, out interface{}, params ...interface{}) (err error, convertedValue interface{}) {
+func convertFloat64To(in float64, out interface{}, params ...interface{}) (convertedValue interface{}, err error) {
 
 	switch getElemKind(out) {
 
@@ -280,14 +280,14 @@ func convertFloat64To(in float64, out interface{}, params ...interface{}) (err e
 		convertedValue = complex(in, 0)
 
 	default:
-		err = invalidOutputType
+		err = errInvalidOutputType
 
 	}
 
 	return
 }
 
-func convertInt64To(in int64, out interface{}) (err error, convertedValue interface{}) {
+func convertInt64To(in int64, out interface{}) (convertedValue interface{}, err error) {
 
 	switch getElemKind(out) {
 
@@ -340,14 +340,14 @@ func convertInt64To(in int64, out interface{}) (err error, convertedValue interf
 		convertedValue = complex(float64(in), 0)
 
 	default:
-		err = invalidOutputType
+		err = errInvalidOutputType
 
 	}
 
 	return
 }
 
-func convertUint64To(in uint64, out interface{}) (err error, convertedValue interface{}) {
+func convertUint64To(in uint64, out interface{}) (convertedValue interface{}, err error) {
 
 	switch getElemKind(out) {
 
@@ -400,7 +400,7 @@ func convertUint64To(in uint64, out interface{}) (err error, convertedValue inte
 		convertedValue = complex(float64(in), 0)
 
 	default:
-		err = invalidOutputType
+		err = errInvalidOutputType
 
 	}
 

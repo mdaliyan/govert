@@ -86,7 +86,7 @@ func Uint64(in interface{}) (out uint64) {
 	return
 }
 
-// Bool converts basic types to float32
+// Float32 converts basic types to float32
 func Float32(in interface{}) (out float32) {
 	This(in, &out)
 	return
@@ -98,7 +98,7 @@ func Float64(in interface{}) (out float64) {
 	return
 }
 
-// Bool converts basic types to complex64
+// Complex64 converts basic types to complex64
 func Complex64(in interface{}) (out complex64) {
 	This(in, &out)
 	return
