@@ -6,12 +6,7 @@
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE)
     
 Package govert provides you some helpers to convert golang basic data types specially _interfaces_ to any another basic type.
- 
-This package uses reflection to detect data types so it may not be what 
-you want if you have so many ops and you need code performance to be high. 
-Otherwise it’s ok for simple use cases, build prototypes or learning purpose.
    
-    
 ## Install:
 ````bash
 $ go get github.com/mdaliyan/govert
@@ -102,17 +97,20 @@ func main() {
  
 ## Benchmarks:
     
-Converting numbers like int, in16, int32, in64, float32, float64, uint, uint, uint16, uint32, uint64
-to each other with govert is totally non-optimal. Just convert them like this.
+govert uses reflection to detect data types so it may not be what 
+you want if you have so many ops and you need code performance to be high. 
+Otherwise it’s ok for simple use cases, build prototypes or learning purpose.
+   
+Converting numbers like int, in16, int32, in64, float32, float64, uint, uint, uint16, uint32, 
+uint64 to each other with govert is totally non-optimal. Just convert them like this.
     
 ````go
  var a float32 = 331.23
  var b int64 = int64(a)
 ````
     
-If you have an interface and you have to check type before
-converting it, or you are trying to convert something to string or vice versa,
- using govert makes sense.
+If you have an interface and you have to check type before converting it, or you are
+trying to convert something to string or vice versa, using govert makes sense.
     
 <table>
     <thead>
