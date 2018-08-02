@@ -223,6 +223,7 @@ trying to convert something to string or vice versa, using govert makes sense.
       </tr>
     </tbody> 
 </table>
+* The above benchmark tests were ran using an Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz
     
 ## Contributing:
     
