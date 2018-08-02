@@ -1,8 +1,8 @@
 package govert
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func assert(t *testing.T, converting, to string, expected, got interface{}) {

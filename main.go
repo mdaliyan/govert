@@ -2,9 +2,9 @@
 package govert
 
 import (
+	"errors"
 	"reflect"
 	"strconv"
-	"errors"
 	"strings"
 )
 
@@ -15,7 +15,7 @@ func getElemKind(i interface{}) reflect.Kind {
 }
 
 // This converts it's first parameter's value to type of it's second parameter and overwrites the second parameter with it
-func This(in interface{}, out interface{}, params ...interface{}) (err error) {
+func This(in, out interface{}, params ...interface{}) (err error) {
 
 	// input might be i pointer, this ensures we check input type correctly
 	for reflect.ValueOf(in).Kind() == reflect.Ptr {
@@ -156,7 +156,7 @@ func convertStringTo(in string, out interface{}, params ...interface{}) (err err
 
 func convertBoolTo(in bool, out interface{}, params ...interface{}) (err error, convertedValue interface{}) {
 
-	toInt8 := func(input bool) (int8) {
+	toInt8 := func(input bool) int8 {
 		if input {
 			return 1
 		}

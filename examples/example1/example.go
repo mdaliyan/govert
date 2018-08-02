@@ -1,8 +1,8 @@
 package main
 
 import (
-	to "github.com/mdaliyan/govert"
 	"fmt"
+	to "github.com/mdaliyan/govert"
 )
 
 func main() {
@@ -10,8 +10,8 @@ func main() {
 	var fl = 113233.247308
 
 	fmt.Println(to.String(fl))
-	fmt.Println(to.String(fl,2))
-	fmt.Println(to.String(fl,3))
+	fmt.Println(to.String(fl, 2))
+	fmt.Println(to.String(fl, 3))
 	fmt.Println(to.Int(fl))
 	fmt.Println(to.Int8(fl))
 	fmt.Println()

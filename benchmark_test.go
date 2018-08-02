@@ -1,9 +1,9 @@
 package govert
 
 import (
-	"testing"
 	"reflect"
 	"strconv"
+	"testing"
 )
 
 var (
