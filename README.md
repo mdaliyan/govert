@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/mdaliyan/govert.svg?branch=master)](https://travis-ci.org/mdaliyan/govert)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mdaliyan/govert?style=flat)](https://goreportcard.com/report/github.com/mdaliyan/govert)
 [![GoDoc](https://godoc.org/github.com/mdaliyan/govert?status.svg)](https://godoc.org/github.com/mdaliyan/govert)
+[![Go Walker](http://gowalker.org/api/v1/badge)](https://gowalker.org/github.com/mdaliyan/govert) 
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE)
     
 Package govert provides you some helpers to convert golang basic data types specially _interfaces_ to any another basic type.
