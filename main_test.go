@@ -65,6 +65,61 @@ func TestConvertBool(t *testing.T) {
 
 }
 
+func TestConvertNil(t *testing.T) {
+
+	typ := "nil"
+
+	assert(t, typ, "String", "", String(nil))
+
+	assert(t, typ, "Bool", false, Bool(nil))
+
+	assert(t, typ, "Int", int(0), Int(nil))
+	assert(t, typ, "Int8", int8(0), Int8(nil))
+	assert(t, typ, "Int16", int16(0), Int16(nil))
+	assert(t, typ, "Int32", int32(0), Int32(nil))
+	assert(t, typ, "Int64", int64(0), Int64(nil))
+
+	assert(t, typ, "Uint", uint(0), Uint(nil))
+	assert(t, typ, "Uint8", uint8(0), Uint8(nil))
+	assert(t, typ, "Uint16", uint16(0), Uint16(nil))
+	assert(t, typ, "Uint32", uint32(0), Uint32(nil))
+	assert(t, typ, "Uint64", uint64(0), Uint64(nil))
+
+	assert(t, typ, "Float32", float32(0), Float32(nil))
+	assert(t, typ, "Float64", float64(0), Float64(nil))
+
+	assert(t, typ, "Complex64", complex64(complex(0, 0)), Complex64(nil))
+	assert(t, typ, "Complex128", complex(0, 0), Complex128(nil))
+}
+
+func TestConvertNilPointer(t *testing.T) {
+
+	var Val *int
+	typ := reflect.TypeOf(Val).Kind().String()
+
+	assert(t, typ, "String", "", String(Val))
+
+	assert(t, typ, "Bool", false, Bool(Val))
+
+	assert(t, typ, "Int", int(0), Int(Val))
+	assert(t, typ, "Int8", int8(0), Int8(Val))
+	assert(t, typ, "Int16", int16(0), Int16(Val))
+	assert(t, typ, "Int32", int32(0), Int32(Val))
+	assert(t, typ, "Int64", int64(0), Int64(Val))
+
+	assert(t, typ, "Uint", uint(0), Uint(Val))
+	assert(t, typ, "Uint8", uint8(0), Uint8(Val))
+	assert(t, typ, "Uint16", uint16(0), Uint16(Val))
+	assert(t, typ, "Uint32", uint32(0), Uint32(Val))
+	assert(t, typ, "Uint64", uint64(0), Uint64(Val))
+
+	assert(t, typ, "Float32", float32(0), Float32(Val))
+	assert(t, typ, "Float64", float64(0), Float64(Val))
+
+	assert(t, typ, "Complex64", complex64(complex(0, 0)), Complex64(Val))
+	assert(t, typ, "Complex128", complex(0, 0), Complex128(Val))
+}
+
 func TestConvertJsonNumber(t *testing.T) {
 
 	var Val json.Number = json.Number("371")

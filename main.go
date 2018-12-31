@@ -19,8 +19,17 @@ func getElemKind(i interface{}) reflect.Kind {
 func This(in, out interface{}, params ...interface{}) (err error) {
 
 	// input might be i pointer, this ensures we check input type correctly
-	for reflect.ValueOf(in).Kind() == reflect.Ptr {
-		in = reflect.ValueOf(in).Elem().Interface()
+	if in == nil {
+		in = ""
+	}
+	el := reflect.ValueOf(in)
+	for el.Kind() == reflect.Ptr {
+		if el.IsNil() {
+			in = ""
+			break
+		} else {
+			in = el.Elem().Interface()
+		}
 	}
 
 	if reflect.ValueOf(out).Kind() != reflect.Ptr {
@@ -107,7 +116,7 @@ func convertStringTo(in string, out interface{}, params ...interface{}) (convert
 		convertedValue = in
 
 	case reflect.Bool:
-		convertedValue = strings.ToLower(in) != "true" || in == "1"
+		convertedValue = strings.ToLower(in) == "true" || in == "1"
 
 	case reflect.Int:
 		convertedValue = int(toFloat64(in))
