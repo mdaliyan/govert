@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"encoding/json"
 )
 
 var errInvalidOutputType = errors.New("output data type is not i simple type")
@@ -28,6 +29,10 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 	}
 
 	var outputValue interface{}
+
+	if reflect.TypeOf(reflect.ValueOf(in).Interface()).String() == "json.Number" {
+		in = in.(json.Number).String()
+	}
 
 	switch reflect.TypeOf(reflect.ValueOf(in).Interface()).Kind() {
 

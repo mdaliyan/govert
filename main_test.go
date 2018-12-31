@@ -3,6 +3,7 @@ package govert
 import (
 	"reflect"
 	"testing"
+	"encoding/json"
 )
 
 func assert(t *testing.T, converting, to string, expected, got interface{}) {
@@ -62,6 +63,36 @@ func TestConvertBool(t *testing.T) {
 	assert(t, typ, "Complex64", complex64(complex(float64(0), 0)), Complex64(Val))
 	assert(t, typ, "Complex128", complex(float64(0), 0), Complex128(Val))
 
+}
+
+func TestConvertJsonNumber(t *testing.T) {
+
+	var Val json.Number = json.Number("371")
+	typ := reflect.TypeOf(Val).Kind().String()
+
+	in, _ := Val.Int64()
+
+	assert(t, typ, "String", "371", String(Val))
+
+	assert(t, typ, "Bool", true, Bool(Val))
+
+	assert(t, typ, "Int", int(in), Int(Val))
+	assert(t, typ, "Int8", int8(in), Int8(Val))
+	assert(t, typ, "Int16", int16(in), Int16(Val))
+	assert(t, typ, "Int32", int32(in), Int32(Val))
+	assert(t, typ, "Int64", int64(in), Int64(Val))
+
+	assert(t, typ, "Uint", uint(in), Uint(Val))
+	assert(t, typ, "Uint8", uint8(in), Uint8(Val))
+	assert(t, typ, "Uint16", uint16(in), Uint16(Val))
+	assert(t, typ, "Uint32", uint32(in), Uint32(Val))
+	assert(t, typ, "Uint64", uint64(in), Uint64(Val))
+
+	assert(t, typ, "Float32", float32(in), Float32(Val))
+	assert(t, typ, "Float64", float64(in), Float64(Val))
+
+	assert(t, typ, "Complex64", complex64(complex(float64(in), 0)), Complex64(Val))
+	assert(t, typ, "Complex128", complex(float64(in), 0), Complex128(Val))
 }
 
 func TestConvertInt(t *testing.T) {
