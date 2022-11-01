@@ -27,9 +27,8 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 		if el.IsNil() {
 			in = ""
 			break
-		} else {
-			in = el.Elem().Interface()
 		}
+		in = el.Elem().Interface() 
 	}
 
 	if reflect.ValueOf(out).Kind() != reflect.Ptr {
@@ -103,7 +102,7 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 	return
 }
 
-func convertStringTo(in string, out interface{}, params ...interface{}) (convertedValue interface{}, err error) {
+func convertStringTo(in string, out interface{}) (convertedValue interface{}, err error) {
 
 	toFloat64 := func(input string) (o float64) {
 		o, err = strconv.ParseFloat(input, 64)

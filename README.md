@@ -7,7 +7,7 @@
 [![Go Walker](http://gowalker.org/api/v1/badge)](https://gowalker.org/github.com/mdaliyan/govert) 
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE)
 
-Package govert provides you some helpers to convert golang basic data types specially _interfaces_ to any another basic type.
+`govert` is a no-dependancy packagheprovides you some helpers to convert golang basic data types specially _interfaces_ to any another basic type.
    
 ## Install:
 ````bash
