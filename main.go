@@ -2,11 +2,11 @@
 package govert
 
 import (
+	"encoding/json"
 	"errors"
 	"reflect"
 	"strconv"
 	"strings"
-	"encoding/json"
 )
 
 var errInvalidOutputType = errors.New("output data type is not i simple type")
@@ -28,7 +28,7 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 			in = ""
 			break
 		}
-		in = el.Elem().Interface() 
+		in = el.Elem().Interface()
 	}
 
 	if reflect.ValueOf(out).Kind() != reflect.Ptr {
@@ -42,57 +42,53 @@ func This(in, out interface{}, params ...interface{}) (err error) {
 		in = in.(json.Number).String()
 	}
 
-	switch reflect.TypeOf(reflect.ValueOf(in).Interface()).Kind() {
+	switch in.(type) {
 
-	case reflect.String:
+	case string:
 		outputValue, err = convertStringTo(in.(string), out)
 
-	case reflect.Bool:
+	case bool:
 		outputValue, err = convertBoolTo(in.(bool), out)
 
-	case reflect.Int:
+	case int:
 		outputValue, err = convertInt64To(int64(in.(int)), out)
 
-	case reflect.Int8:
+	case int8:
 		outputValue, err = convertInt64To(int64(in.(int8)), out)
 
-	case reflect.Int16:
+	case int16:
 		outputValue, err = convertInt64To(int64(in.(int16)), out)
 
-	case reflect.Int32:
+	case int32:
 		outputValue, err = convertInt64To(int64(in.(int32)), out)
 
-	case reflect.Int64:
+	case int64:
 		outputValue, err = convertInt64To(in.(int64), out)
 
-	case reflect.Uint:
+	case uint:
 		outputValue, err = convertUint64To(uint64(in.(uint)), out)
 
-	case reflect.Uint8:
+	case uint8:
 		outputValue, err = convertUint64To(uint64(in.(uint8)), out)
 
-	case reflect.Uint16:
+	case uint16:
 		outputValue, err = convertUint64To(uint64(in.(uint16)), out)
 
-	case reflect.Uint32:
+	case uint32:
 		outputValue, err = convertUint64To(uint64(in.(uint32)), out)
 
-	case reflect.Uint64:
+	case uint64:
 		outputValue, err = convertUint64To(in.(uint64), out)
 
-	case reflect.Float32:
+	case float32:
 		outputValue, err = convertFloat64To(float64(in.(float32)), out, params...)
 
-	case reflect.Float64:
+	case float64:
 		outputValue, err = convertFloat64To(in.(float64), out, params...)
-
-	case reflect.Complex64:
-
-	case reflect.Complex128:
 
 	default:
 		err = errors.New("input data type is not i simple type")
-
+		return err
 	}
 
 	if err == nil {

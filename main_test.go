@@ -1,14 +1,14 @@
 package govert
 
 import (
+	"encoding/json"
 	"reflect"
 	"testing"
-	"encoding/json"
 )
 
-func assert(t *testing.T, converting, to string, expected, got interface{}) {
+func assert(t *testing.T, converting, to string, expected, got interface{}, message ...string) {
 	if expected != got {
-		t.Errorf("converting %s to %s, expected %v, got %v", converting, to, expected, got)
+		t.Errorf("converting %s to %s, expected %v, got %v, %v", converting, to, expected, got, message)
 	}
 }
 
@@ -129,7 +129,7 @@ func TestConvertJsonNumber(t *testing.T) {
 
 	assert(t, typ, "String", "371", String(Val))
 
-	assert(t, typ, "Bool", true, Bool(Val))
+	assert(t, typ, "Bool", false, Bool(Val)) // only "1" and "true" is true
 
 	assert(t, typ, "Int", int(in), Int(Val))
 	assert(t, typ, "Int8", int8(in), Int8(Val))
