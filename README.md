@@ -1,6 +1,6 @@
 # govert
-    
-[![Build Status](https://travis-ci.org/mdaliyan/govert.svg?branch=master)](https://travis-ci.org/mdaliyan/govert)
+
+![example workflow](https://github.com/mdaliyan/govert/actions/workflows/test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/mdaliyan/govert/badge.svg?branch=master)](https://coveralls.io/github/mdaliyan/govert?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mdaliyan/govert?style=flat)](https://goreportcard.com/report/github.com/mdaliyan/govert)
 [![godoc](https://godoc.org/github.com/mdaliyan/govert.svg?status.svg)](https://godoc.org/github.com/mdaliyan/govert)
